@@ -250,6 +250,13 @@ class AssociationProxyTest < ActiveRecord::TestCase
     assert_no_queries { david.posts.pluck(:title) }
   end
 
+  def test_association_calculation_works
+    david = authors(:david)
+
+    author = Author.create(name: "Julia", posts: david.posts)
+    author.touch
+  end
+
   def test_reset_unloads_target
     david = authors(:david)
     david.posts.reload

@@ -1,4 +1,7 @@
 class Author < ActiveRecord::Base
+  after_create -> { posts.minimum(:title) }
+  after_touch -> { posts.minimum(:title) }
+
   has_many :posts
   has_many :serialized_posts
   has_one :post
