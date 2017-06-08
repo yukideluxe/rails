@@ -24,6 +24,10 @@ module ActionCable
         websocket.close
       end
 
+      def fail(error)
+        websocket.fail(error)
+      end
+
       def protocol
         websocket.protocol
       end
