@@ -152,12 +152,21 @@ module ActionDispatch
         super
       end
 
+      # Sets a flash object (v) that will be accessible in the next action with the given key (k)
+      #
+      #    flash[:success] = "All good!"
+      #    # places the string <tt>"All good!"</tt> in the flash with the key <tt>:success</tt>
+      #    # the sring will be accessible in the current and next action by using the accessor <tt>flash[:success]</tt>
       def []=(k, v)
         k = k.to_s
         @discard.delete k
         @flashes[k] = v
       end
 
+      # Retrieves the flash object associated with a given key (k). Returns nil if not found.
+      #
+      #    flash[:success]
+      #    # returns the object that has been set with the key <tt>:success</tt> in the previous or current action
       def [](k)
         @flashes[k.to_s]
       end
@@ -176,6 +185,7 @@ module ActionDispatch
         @flashes.key? name.to_s
       end
 
+      # Deletes the object associated with the key
       def delete(key)
         key = key.to_s
         @discard.delete key
@@ -191,6 +201,7 @@ module ActionDispatch
         @flashes.empty?
       end
 
+      # Clears all the objects stored in the flash
       def clear
         @discard.clear
         @flashes.clear
