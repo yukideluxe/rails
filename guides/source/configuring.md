@@ -639,6 +639,8 @@ Defaults to `'signed cookie'`.
         => :bad_request,
       'Rack::QueryParser::ParameterTypeError'
         => :bad_request,
+      'Rack::Multipart::EmptyContentError'
+        => :bad_request,
       'Rack::QueryParser::InvalidParameterError'
         => :bad_request,
       'ActiveRecord::RecordNotFound'

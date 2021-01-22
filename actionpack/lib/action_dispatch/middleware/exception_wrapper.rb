@@ -20,7 +20,8 @@ module ActionDispatch
       "ActionController::BadRequest"                       => :bad_request,
       "ActionController::ParameterMissing"                 => :bad_request,
       "Rack::QueryParser::ParameterTypeError"              => :bad_request,
-      "Rack::QueryParser::InvalidParameterError"           => :bad_request
+      "Rack::QueryParser::InvalidParameterError"           => :bad_request,
+      "Rack::Multipart::EmptyContentError"                 => :bad_request
     )
 
     cattr_accessor :rescue_templates, default: Hash.new("diagnostics").merge!(
